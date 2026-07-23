@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steampunk Parlor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --walnut: #1F1512;
+    --walnut-deep: #140D0B;
+    --brass: #B8823D;
+    --brass-bright: #D4A052;
+    --parchment: #EFE3C8;
+    --parchment-dim: #DCCBA3;
+    --oxblood: #5C2A22;
+    --ink: #2A1D16;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 1.08rem;
+  }
+
+  h1, h2, h3, .brand {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.02em;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--brass-bright);
+    outline-offset: 3px;
+  }
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Ornamental divider (signature element) ---------- */
+  .gear-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 8px 0;
+  }
+  .gear-divider .line {
+    height: 1px;
+    width: 64px;
+    background: linear-gradient(to var(--dir, right), transparent, var(--brass));
+  }
+  .gear-divider svg { flex-shrink: 0; }
+
+  /* ---------- Header ---------- */
+  header {
+    background: var(--walnut-deep);
+    color: var(--parchment);
+    padding: 22px 0;
+    border-bottom: 3px solid var(--brass);
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brass-bright);
+  }
+  .header-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brass);
+    color: var(--walnut-deep);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(184,130,61,0.18), transparent 60%),
+      var(--walnut);
+    color: var(--parchment);
+    padding: 80px 0 70px;
+    text-align: center;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brass-bright);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    max-width: 16ch;
+    margin: 0 auto 22px;
+    color: var(--parchment);
+  }
+  .hero-sub {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--parchment-dim);
+    max-width: 42ch;
+    margin: 0 auto 36px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    border: 1.5px solid var(--brass);
+  }
+  .btn-primary { background: var(--brass); color: var(--walnut-deep); }
+  .btn-secondary { background: transparent; color: var(--brass-bright); }
+
+  .hero-meta {
+    margin-top: 44px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--parchment-dim);
+  }
+  .hero-meta strong {
+    font-family: 'Cinzel', serif;
+    color: var(--brass-bright);
+    font-size: 1.4rem;
+    display: block;
+    font-weight: 600;
+  }
+
+  /* ---------- Services ---------- */
+  .section { padding: 64px 0; }
+  .section-title {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 6px;
+    color: var(--walnut);
+  }
+  .section-sub {
+    text-align: center;
+    font-style: italic;
+    color: var(--oxblood);
+    margin-bottom: 40px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: #fff;
+    border: 1px solid var(--parchment-dim);
+    border-top: 3px solid var(--brass);
+    padding: 26px 22px;
+    text-align: center;
+  }
+  .service-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: var(--walnut);
+  }
+  .service-card p {
+    font-size: 0.95rem;
+    color: #5A4A3C;
+  }
+
+  /* ---------- Stylists ---------- */
+  .stylists-section {
+    background: var(--walnut);
+    color: var(--parchment);
+    padding: 56px 0;
+  }
+  .stylists-section .section-title,
+  .stylists-section .gear-divider .line { color: var(--parchment); }
+  .stylists-section .section-sub { color: var(--brass-bright); }
+  .stylist-row {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .stylist {
+    text-align: center;
+    max-width: 220px;
+  }
+  .stylist-name {
+    font-family: 'Cinzel', serif;
+    color: var(--brass-bright);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .stylist-role {
+    font-size: 0.85rem;
+    color: var(--parchment-dim);
+    font-style: italic;
+  }
+
+  /* ---------- Hours ---------- */
+  .hours-strip {
+    display: flex;
+    border: 1px solid var(--parchment-dim);
+    max-width: 640px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background: #fff;
+  }
+  .hour-day {
+    flex: 1 1 0;
+    min-width: 70px;
+    padding: 16px 6px;
+    text-align: center;
+    border-right: 1px solid var(--parchment-dim);
+  }
+  .hour-day:last-child { border-right: none; }
+  .hour-day .d {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--oxblood);
+    margin-bottom: 6px;
+  }
+  .hour-day .t { font-size: 0.85rem; font-weight: 600; }
+  .hour-day.today { background: var(--brass); }
+  .hour-day.today .d { color: var(--walnut-deep); opacity: 0.75; }
+  .hour-day.today .t { color: var(--walnut-deep); }
+  .hour-day.closed .t { color: #A99884; }
+
+  /* ---------- Testimonial ---------- */
+  .testimonial { padding: 60px 0; text-align: center; }
+  .testimonial blockquote {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    max-width: 34ch;
+    margin: 0 auto 16px;
+    line-height: 1.5;
+    color: var(--walnut);
+  }
+  .testimonial cite {
+    font-style: italic;
+    color: var(--oxblood);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact {
+    background: var(--walnut-deep);
+    color: var(--parchment);
+    padding: 60px 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact-item { margin-bottom: 22px; }
+  .contact-item .label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--brass-bright);
+    margin-bottom: 6px;
+  }
+  .contact-item .value { font-size: 1.1rem; }
+  .contact-item a { text-decoration: none; border-bottom: 1px solid var(--brass); }
+
+  footer {
+    background: var(--walnut-deep);
+    color: #8A7A64;
+    text-align: center;
+    padding: 22px 0;
+    font-size: 0.82rem;
+    border-top: 1px solid rgba(184,130,61,0.25);
+  }
+
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .stylist-row { gap: 28px; }
+    .hour-day { min-width: 42px; padding: 10px 3px; }
+    .hour-day .t { font-size: 0.7rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand" id="brandName">Steampunk Parlor</div>
+    <a class="header-call" id="headerCallLink" href="tel:+15403682000">&#9742; Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow" id="heroCategory">Hair &middot; Nails &middot; Waxing</div>
+    <h1 id="heroHeadline">A cozy, old-world parlor for hair, nails &amp; a little pampering.</h1>
+    <p class="hero-sub" id="heroSub">Whimsical decor, familiar faces, and stylists who genuinely listen.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" id="heroCallBtn" href="tel:+15403682000">Book Your Visit</a>
+      <a class="btn-secondary" id="heroDirectionsBtn" href="#" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <div class="gear-divider" style="margin-top:44px;">
+      <div class="line"></div>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5Z" stroke="#D4A052" stroke-width="1.3"/>
+        <path d="M12 2V4.5M12 19.5V22M22 12H19.5M4.5 12H2M18.36 5.64L16.6 7.4M7.4 16.6L5.64 18.36M18.36 18.36L16.6 16.6M7.4 7.4L5.64 5.64" stroke="#D4A052" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <div class="line" style="--dir:left;"></div>
+    </div>
+    <div class="hero-meta">
+      <div><strong id="metaRating">4.7</strong>Google Rating</div>
+      <div><strong id="metaReviews">177+</strong>Reviews</div>
+      <div><strong id="metaYears">Est. Local</strong>Full Service</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">Everything under one roof.</p>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<section class="stylists-section">
+  <div class="wrap">
+    <h2 class="section-title">Meet the Team</h2>
+    <p class="section-sub">The hands behind the work.</p>
+    <div class="stylist-row" id="stylistRow"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Hours</h2>
+    <p class="section-sub">Walk-ins welcome, appointments preferred.</p>
+    <div class="hours-strip" id="hoursStrip"></div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="wrap">
+    <blockquote id="testimonialQuote">&ldquo;Such a warm, welcoming vibe &mdash; and Brittany really listens to what you want.&rdquo;</blockquote>
+    <cite id="testimonialAuthor">&mdash; Google Review</cite>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="contact-item">
+        <div class="label">Phone</div>
+        <div class="value"><a id="contactPhoneLink" href="tel:+15403682000">(540) 368-2000</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Address</div>
+        <div class="value" id="contactAddress">1105 Potomac Ave, Fredericksburg, VA 22405</div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-item">
+        <div class="label">Follow Along</div>
+        <div class="value" id="contactSocial">@steampunkparlor on Instagram</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Get In Touch</div>
+        <div class="value"><a id="contactCallCta" href="tel:+15403682000">Call to book your appointment</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" id="footerText">&copy; 2026 Steampunk Parlor. All rights reserved.</div>
+</footer>
+
+<script>
+const CONFIG = {
+  businessName: "Steampunk Parlor",
+  category: "Hair &middot; Nails &middot; Waxing",
+  headline: "A cozy, old-world parlor for hair, nails &amp; a little pampering.",
+  subhead: "Whimsical decor, familiar faces, and stylists who genuinely listen.",
+  phoneDisplay: "(540) 368-2000",
+  phoneLink: "+15403682000",
+  address: "1105 Potomac Ave, Fredericksburg, VA 22405",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=1105+Potomac+Ave+Fredericksburg+VA+22405",
+  social: "@steampunkparlor on Instagram",
+  rating: "4.7",
+  reviews: "177+",
+  yearsLabel: "Full Service",
+
+  services: [
+    { name: "Cuts & Color", desc: "Haircuts, coloring, extensions, and styling." },
+    { name: "Nails", desc: "Gel, acrylic, and dip powder treatments." },
+    { name: "Brows & Lashes", desc: "Tinting and extensions, done right." },
+    { name: "Beard Trims", desc: "Sharp, clean, old-school barbering." }
+  ],
+
+  stylists: [
+    { name: "Danielle", role: "Stylist & Nail Technician" },
+    { name: "Brittany", role: "Stylist" }
+  ],
+
+  hours: [
+    { day: "Sun", time: "12–5" },
+    { day: "Mon", time: "Closed", closed: true },
+    { day: "Tue", time: "9–7" },
+    { day: "Wed", time: "9–7" },
+    { day: "Thu", time: "9–7" },
+    { day: "Fri", time: "9–7" },
+    { day: "Sat", time: "8–5" }
+  ],
+
+  testimonialQuote: "\u201cSuch a warm, welcoming vibe \u2014 and Brittany really listens to what you want.\u201d",
+  testimonialAuthor: "\u2014 Google Review"
+};
+
+document.getElementById('brandName').textContent = CONFIG.businessName;
+document.getElementById('heroCategory').innerHTML = CONFIG.category;
+document.getElementById('heroHeadline').innerHTML = CONFIG.headline;
+document.getElementById('heroSub').innerHTML = CONFIG.subhead;
+document.getElementById('metaRating').textContent = CONFIG.rating;
+document.getElementById('metaReviews').textContent = CONFIG.reviews;
+document.getElementById('metaYears').textContent = CONFIG.yearsLabel;
+document.getElementById('contactAddress').textContent = CONFIG.address;
+document.getElementById('contactSocial').textContent = CONFIG.social;
+document.getElementById('testimonialQuote').innerHTML = "&ldquo;" + CONFIG.testimonialQuote.replace(/[\u201c\u201d]/g,'') + "&rdquo;";
+document.getElementById('testimonialAuthor').textContent = CONFIG.testimonialAuthor;
+document.getElementById('footerText').innerHTML = "&copy; " + new Date().getFullYear() + " " + CONFIG.businessName + ". All rights reserved.";
+
+const telHref = "tel:+1" + CONFIG.phoneLink.replace(/\D/g, '').replace(/^1/, '');
+['headerCallLink','heroCallBtn','contactPhoneLink','contactCallCta'].forEach(id => {
+  document.getElementById(id).setAttribute('href', telHref);
+});
+document.getElementById('contactPhoneLink').textContent = CONFIG.phoneDisplay;
+document.getElementById('heroDirectionsBtn').setAttribute('href', CONFIG.mapsUrl);
+
+const servicesGrid = document.getElementById('servicesGrid');
+CONFIG.services.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'service-card';
+  card.innerHTML = `<h3>${s.name}</h3><p>${s.desc}</p>`;
+  servicesGrid.appendChild(card);
+});
+
+const stylistRow = document.getElementById('stylistRow');
+CONFIG.stylists.forEach(s => {
+  const el = document.createElement('div');
+  el.className = 'stylist';
+  el.innerHTML = `<div class="stylist-name">${s.name}</div><div class="stylist-role">${s.role}</div>`;
+  stylistRow.appendChild(el);
+});
+
+const hoursStrip = document.getElementById('hoursStrip');
+const todayIdx = new Date().getDay();
+CONFIG.hours.forEach((h, i) => {
+  const el = document.createElement('div');
+  el.className = 'hour-day' + (i === todayIdx ? ' today' : '') + (h.closed ? ' closed' : '');
+  el.innerHTML = `<div class="d">${h.day}</div><div class="t">${h.time}</div>`;
+  hoursStrip.appendChild(el);
+});
+</script>
+
+</body>
+</html>

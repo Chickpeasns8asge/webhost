@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gigi's Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --wine: #4A1C2E;
+    --wine-deep: #350F1F;
+    --gold: #C89B3C;
+    --gold-bright: #E0B458;
+    --cream: #FBF3E9;
+    --cream-dim: #EBDCC5;
+    --clay: #8C4A3A;
+    --ink: #2B1A1F;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito Sans', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .brand { font-family: 'Playfair Display', Georgia, serif; }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--gold-bright);
+    outline-offset: 3px;
+  }
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+  /* Signature element: a soft braided-wave divider */
+  .wave-divider {
+    display: flex;
+    justify-content: center;
+    margin: 6px 0;
+  }
+  .wave-divider svg { display: block; }
+
+  header {
+    background: var(--wine-deep);
+    color: var(--cream);
+    padding: 22px 0;
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+  .header-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--wine-deep);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 24px;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+
+  .hero {
+    background: linear-gradient(180deg, var(--wine) 0%, var(--wine-deep) 100%);
+    color: var(--cream);
+    padding: 78px 0 66px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    font-weight: 700;
+    max-width: 15ch;
+    margin: 0 auto 20px;
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--cream-dim);
+    max-width: 44ch;
+    margin: 0 auto 34px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-radius: 26px;
+    border: 1.5px solid var(--gold);
+  }
+  .btn-primary { background: var(--gold); color: var(--wine-deep); }
+  .btn-secondary { background: transparent; color: var(--gold-bright); }
+
+  .hero-meta {
+    margin-top: 42px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+    color: var(--cream-dim);
+  }
+  .hero-meta strong {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-bright);
+    font-size: 1.4rem;
+    display: block;
+    font-weight: 700;
+  }
+
+  .section { padding: 64px 0; }
+  .section-title {
+    font-size: 1.7rem;
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--wine);
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--clay);
+    margin-bottom: 40px;
+    max-width: 50ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+  }
+  .service-card {
+    background: #fff;
+    border: 1px solid var(--cream-dim);
+    border-radius: 12px;
+    padding: 26px 22px;
+    text-align: center;
+  }
+  .service-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--wine);
+    font-weight: 500;
+  }
+  .service-card p { font-size: 0.92rem; color: #6B5049; }
+
+  .owner-section {
+    background: var(--wine-deep);
+    color: var(--cream);
+    padding: 56px 0;
+    text-align: center;
+  }
+  .owner-section .section-title { color: var(--cream); }
+  .owner-section .section-sub { color: var(--gold-bright); }
+  .owner-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--gold-bright);
+    margin-bottom: 10px;
+  }
+  .owner-blurb {
+    max-width: 46ch;
+    margin: 0 auto;
+    color: var(--cream-dim);
+    font-size: 1rem;
+  }
+
+  .hours-strip {
+    display: flex;
+    border: 1px solid var(--cream-dim);
+    max-width: 640px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .hour-day {
+    flex: 1 1 0;
+    min-width: 70px;
+    padding: 16px 6px;
+    text-align: center;
+    border-right: 1px solid var(--cream-dim);
+  }
+  .hour-day:last-child { border-right: none; }
+  .hour-day .d {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--clay);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .hour-day .t { font-size: 0.85rem; font-weight: 600; }
+  .hour-day.today { background: var(--gold); }
+  .hour-day.today .d { color: var(--wine-deep); opacity: 0.75; }
+  .hour-day.today .t { color: var(--wine-deep); }
+  .hour-day.closed .t { color: #B7A796; }
+
+  .testimonial { padding: 60px 0; text-align: center; }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    max-width: 34ch;
+    margin: 0 auto 16px;
+    line-height: 1.45;
+    color: var(--wine);
+    font-weight: 500;
+  }
+  .testimonial cite { color: var(--clay); font-size: 0.92rem; }
+
+  .contact {
+    background: var(--wine-deep);
+    color: var(--cream);
+    padding: 60px 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact-item { margin-bottom: 22px; }
+  .contact-item .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-bright);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .contact-item .value { font-size: 1.1rem; }
+  .contact-item a { text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+  footer {
+    background: var(--wine-deep);
+    color: #A98A94;
+    text-align: center;
+    padding: 22px 0;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(200,155,60,0.25);
+  }
+
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .hour-day { min-width: 42px; padding: 10px 3px; }
+    .hour-day .t { font-size: 0.7rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand" id="brandName">Gigi's Salon</div>
+    <a class="header-call" id="headerCallLink" href="tel:+15402161054">&#9742; Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow" id="heroCategory">Hair &middot; Braids &middot; Extensions</div>
+    <h1 id="heroHeadline">Protective styles, braids &amp; color that hold up all year.</h1>
+    <p class="hero-sub" id="heroSub">A hidden-gem salon in Stafford where every style is done with care &mdash; and your edges stay intact.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" id="heroCallBtn" href="tel:+15402161054">Book an Appointment</a>
+      <a class="btn-secondary" id="heroDirectionsBtn" href="#" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <div class="wave-divider" style="margin-top:44px;">
+      <svg width="140" height="20" viewBox="0 0 140 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 10C12 2 22 18 32 10C42 2 52 18 62 10C72 2 82 18 92 10C102 2 112 18 122 10C126 7 134 13 138 10" stroke="#E0B458" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="hero-meta">
+      <div><strong id="metaRating">4.6</strong>Google Rating</div>
+      <div><strong id="metaReviews">56+</strong>Reviews</div>
+      <div><strong id="metaYears">Est. 2017</strong>Locally Owned</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">From protective styles to color, every service is done with your hair's health in mind.</p>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<section class="owner-section">
+  <div class="wrap">
+    <h2 class="section-title">Meet Gigi</h2>
+    <div class="owner-name" id="ownerName">Geraldine "Gigi" R.</div>
+    <p class="owner-blurb" id="ownerBlurb">Bringing over a decade of experience &mdash; including years in Georgetown, DC &mdash; to every client who sits in her chair since 2017.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Hours</h2>
+    <p class="section-sub">Appointments recommended &mdash; walk-ins welcome when there's room in the chair.</p>
+    <div class="hours-strip" id="hoursStrip"></div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="wrap">
+    <blockquote id="testimonialQuote">&ldquo;Gigi is so gentle and understood exactly what I needed &mdash; I'm definitely a repeat customer.&rdquo;</blockquote>
+    <cite id="testimonialAuthor">&mdash; Google Review</cite>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="contact-item">
+        <div class="label">Phone</div>
+        <div class="value"><a id="contactPhoneLink" href="tel:+15402161054">(540) 216-1054</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Address</div>
+        <div class="value" id="contactAddress">741 Courthouse Rd, Stafford, VA 22554</div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-item">
+        <div class="label">Follow Along</div>
+        <div class="value" id="contactSocial">Find us on Facebook</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Get In Touch</div>
+        <div class="value"><a id="contactCallCta" href="tel:+15402161054">Call to book your style</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" id="footerText">&copy; 2026 Gigi's Salon. All rights reserved.</div>
+</footer>
+
+<script>
+const CONFIG = {
+  businessName: "Gigi's Salon",
+  category: "Hair &middot; Braids &middot; Extensions",
+  headline: "Protective styles, braids &amp; color that hold up all year.",
+  subhead: "A hidden-gem salon in Stafford where every style is done with care \u2014 and your edges stay intact.",
+  phoneDisplay: "(540) 216-1054",
+  phoneLink: "+15402161054",
+  address: "741 Courthouse Rd, Stafford, VA 22554",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=741+Courthouse+Rd+Stafford+VA+22554",
+  social: "Find us on Facebook",
+  rating: "4.6",
+  reviews: "56+",
+  yearsLabel: "Locally Owned",
+
+  services: [
+    { name: "Braids & Protective Styles", desc: "Cornrows, Senegalese twists, and more \u2014 done to last." },
+    { name: "Extensions & Weaves", desc: "Full installs and removals, gentle on your natural hair." },
+    { name: "Color & Balayage", desc: "Custom color, done with attention to hair health." },
+    { name: "Keratin & Treatments", desc: "Smoothing treatments starting at $250." }
+  ],
+
+  ownerName: "Geraldine \u201cGigi\u201d R.",
+  ownerBlurb: "Bringing over a decade of experience \u2014 including years in Georgetown, DC \u2014 to every client who sits in her chair since 2017.",
+
+  hours: [
+    { day: "Sun", time: "Closed", closed: true },
+    { day: "Mon", time: "Closed", closed: true },
+    { day: "Tue", time: "10–6" },
+    { day: "Wed", time: "10–6" },
+    { day: "Thu", time: "10–6" },
+    { day: "Fri", time: "10–6" },
+    { day: "Sat", time: "10–5" }
+  ],
+
+  testimonialQuote: "\u201cGigi is so gentle and understood exactly what I needed \u2014 I'm definitely a repeat customer.\u201d",
+  testimonialAuthor: "\u2014 Google Review"
+};
+
+document.getElementById('brandName').textContent = CONFIG.businessName;
+document.getElementById('heroCategory').innerHTML = CONFIG.category;
+document.getElementById('heroHeadline').innerHTML = CONFIG.headline;
+document.getElementById('heroSub').innerHTML = CONFIG.subhead;
+document.getElementById('metaRating').textContent = CONFIG.rating;
+document.getElementById('metaReviews').textContent = CONFIG.reviews;
+document.getElementById('metaYears').textContent = CONFIG.yearsLabel;
+document.getElementById('contactAddress').textContent = CONFIG.address;
+document.getElementById('contactSocial').textContent = CONFIG.social;
+document.getElementById('ownerName').innerHTML = CONFIG.ownerName;
+document.getElementById('ownerBlurb').innerHTML = CONFIG.ownerBlurb;
+document.getElementById('testimonialQuote').innerHTML = "&ldquo;" + CONFIG.testimonialQuote.replace(/[\u201c\u201d]/g,'') + "&rdquo;";
+document.getElementById('testimonialAuthor').textContent = CONFIG.testimonialAuthor;
+document.getElementById('footerText').innerHTML = "&copy; " + new Date().getFullYear() + " " + CONFIG.businessName + ". All rights reserved.";
+
+const telHref = "tel:+1" + CONFIG.phoneLink.replace(/\D/g, '').replace(/^1/, '');
+['headerCallLink','heroCallBtn','contactPhoneLink','contactCallCta'].forEach(id => {
+  document.getElementById(id).setAttribute('href', telHref);
+});
+document.getElementById('contactPhoneLink').textContent = CONFIG.phoneDisplay;
+document.getElementById('heroDirectionsBtn').setAttribute('href', CONFIG.mapsUrl);
+
+const servicesGrid = document.getElementById('servicesGrid');
+CONFIG.services.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'service-card';
+  card.innerHTML = `<h3>${s.name}</h3><p>${s.desc}</p>`;
+  servicesGrid.appendChild(card);
+});
+
+const hoursStrip = document.getElementById('hoursStrip');
+const todayIdx = new Date().getDay();
+CONFIG.hours.forEach((h, i) => {
+  const el = document.createElement('div');
+  el.className = 'hour-day' + (i === todayIdx ? ' today' : '') + (h.closed ? ' closed' : '');
+  el.innerHTML = `<div class="d">${h.day}</div><div class="t">${h.time}</div>`;
+  hoursStrip.appendChild(el);
+});
+</script>
+
+</body>
+</html>

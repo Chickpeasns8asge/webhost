@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W F Parker Heating & Air, Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #101C2C;
+    --parchment: #FAF6ED;
+    --ochre: #C79A3E;
+    --slate: #4A5568;
+    --line: #E4DCC8;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Work Sans', -apple-system, sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--ochre);
+    outline-offset: 3px;
+  }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Header ---------- */
+  header {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 20px 0;
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .header-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ochre);
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 72px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    max-width: 15ch;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--slate);
+    max-width: 46ch;
+    margin-bottom: 32px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.98rem;
+    border: 1.5px solid transparent;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--parchment);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .hero-meta {
+    margin-top: 40px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 0.92rem;
+    color: var(--slate);
+  }
+  .hero-meta strong { color: var(--ink); font-family: 'Fraunces', serif; font-size: 1.3rem; display: block; }
+
+  /* ---------- Services ---------- */
+  .section {
+    padding: 56px 0;
+  }
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    color: var(--slate);
+    margin-bottom: 32px;
+    max-width: 52ch;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .service-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .service-card p {
+    font-size: 0.92rem;
+    color: var(--slate);
+  }
+
+  /* ---------- Hours strip (signature element) ---------- */
+  .hours-section {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 48px 0;
+  }
+  .hours-section .section-title { color: var(--parchment); }
+  .hours-section .section-sub { color: #B7BFCB; }
+  .hours-strip {
+    display: flex;
+    border: 1px solid rgba(250,246,237,0.18);
+    border-radius: 4px;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+  .hour-day {
+    flex: 1 1 0;
+    min-width: 80px;
+    padding: 16px 8px;
+    text-align: center;
+    border-right: 1px solid rgba(250,246,237,0.12);
+  }
+  .hour-day:last-child { border-right: none; }
+  .hour-day .d {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #94A0B0;
+    margin-bottom: 6px;
+  }
+  .hour-day .t {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .hour-day.today {
+    background: var(--ochre);
+  }
+  .hour-day.today .d { color: var(--ink); opacity: 0.7; }
+  .hour-day.today .t { color: var(--ink); font-weight: 600; }
+  .hour-day.closed .t { color: #6B7684; }
+
+  /* ---------- Testimonial ---------- */
+  .testimonial {
+    padding: 56px 0;
+    text-align: center;
+  }
+  .testimonial blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    max-width: 32ch;
+    margin: 0 auto 16px;
+    line-height: 1.4;
+  }
+  .testimonial cite {
+    font-style: normal;
+    color: var(--slate);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Contact / footer ---------- */
+  .contact {
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    padding: 56px 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact-item { margin-bottom: 20px; }
+  .contact-item .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ochre);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .contact-item .value {
+    font-size: 1.05rem;
+  }
+  .contact-item a { text-decoration: none; border-bottom: 1px solid var(--ochre); }
+
+  footer {
+    background: var(--ink);
+    color: #8B96A5;
+    text-align: center;
+    padding: 24px 0;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0; }
+    .hour-day { min-width: 46px; padding: 10px 4px; }
+    .hour-day .t { font-size: 0.72rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand" id="brandName">Business Name</div>
+    <a class="header-call" id="headerCallLink" href="tel:+15555555555">
+      <span aria-hidden="true">&#9742;</span> <span id="headerCallText">Call Now</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow" id="heroCategory">Local Service</div>
+    <h1 id="heroHeadline">Trusted by your neighbors, right here in town.</h1>
+    <p class="hero-sub" id="heroSub">
+      Straightforward work, fair pricing, and a team that shows up when they say they will.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" id="heroCallBtn" href="tel:+15555555555">Call for a Quote</a>
+      <a class="btn-secondary" id="heroDirectionsBtn" href="#" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong id="metaRating">4.8</strong>Google Rating</div>
+      <div><strong id="metaReviews">120+</strong>Reviews</div>
+      <div><strong id="metaYears">Local</strong>Family Owned</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">What We Do</h2>
+    <p class="section-sub">A few of the ways we help people around here.</p>
+    <div class="services-grid" id="servicesGrid">
+      <!-- populated by CONFIG.services -->
+    </div>
+  </div>
+</section>
+
+<section class="hours-section">
+  <div class="wrap">
+    <h2 class="section-title">Hours</h2>
+    <p class="section-sub">Stop by, or call ahead to book a time that works.</p>
+    <div class="hours-strip" id="hoursStrip">
+      <!-- populated by CONFIG.hours -->
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="wrap">
+    <blockquote id="testimonialQuote">"Great service and fair prices — highly recommend."</blockquote>
+    <cite id="testimonialAuthor">— A happy customer</cite>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="contact-item">
+        <div class="label">Phone</div>
+        <div class="value"><a id="contactPhoneLink" href="tel:+15555555555">(555) 555-5555</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Address</div>
+        <div class="value" id="contactAddress">123 Main St, Anytown, VA</div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-item">
+        <div class="label">Service Area</div>
+        <div class="value" id="contactArea">Serving the local area</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Get In Touch</div>
+        <div class="value"><a id="contactCallCta" href="tel:+15555555555">Call now for a free estimate</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" id="footerText">&copy; 2026 Business Name. All rights reserved.</div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT ONLY THIS CONFIG OBJECT TO STAMP OUT A NEW LEAD'S SITE.
+   Everything below auto-populates from these values.
+   ============================================================ */
+const CONFIG = {
+  businessName: "W F Parker Heating & Air, Inc.",
+  category: "Heating & Air Conditioning",
+  headline: "Honest HVAC service, the same crew for 20 years.",
+  subhead: "No upselling, no price gouging \u2014 just fixing what needs to be fixed, fast.",
+  phoneDisplay: "(540) 659-3338",
+  phoneLink: "+15406593338",
+  address: "168 Hope Rd, Stafford, VA 22554",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=168+Hope+Rd+Stafford+VA+22554",
+  serviceArea: "Stafford County, VA",
+  rating: "4.4",
+  reviews: "23+",
+  yearsLabel: "20 Years Local",
+
+  services: [
+    { name: "AC Repair & Installation", desc: "Fast diagnostics, honest pricing, no unnecessary upsells." },
+    { name: "Heating & Furnace Service", desc: "Repairs and installs for every system type." },
+    { name: "Emergency Calls", desc: "Same-day service when your system goes down." }
+  ],
+
+  hours: [
+    { day: "Sun", time: "7–7" },
+    { day: "Mon", time: "7–7" },
+    { day: "Tue", time: "7–7" },
+    { day: "Wed", time: "7–7" },
+    { day: "Thu", time: "7–7" },
+    { day: "Fri", time: "7–7" },
+    { day: "Sat", time: "7–7" }
+  ],
+
+  testimonialQuote: "\u201cWe've used Mr. Parker for close to 20 years. He's an old timer that never tries to upsell you or price gouge you \u2014 he just fixes what needs to be fixed.\u201d",
+  testimonialAuthor: "\u2014 Google Review"
+};
+/* ============================================================
+   Do not edit below this line.
+   ============================================================ */
+
+document.getElementById('brandName').textContent = CONFIG.businessName;
+document.getElementById('heroCategory').textContent = CONFIG.category;
+document.getElementById('heroHeadline').textContent = CONFIG.headline;
+document.getElementById('heroSub').textContent = CONFIG.subhead;
+document.getElementById('metaRating').textContent = CONFIG.rating;
+document.getElementById('metaReviews').textContent = CONFIG.reviews;
+document.getElementById('metaYears').textContent = CONFIG.yearsLabel;
+document.getElementById('contactAddress').textContent = CONFIG.address;
+document.getElementById('contactArea').textContent = "Serving " + CONFIG.serviceArea;
+document.getElementById('testimonialQuote').textContent = CONFIG.testimonialQuote;
+document.getElementById('testimonialAuthor').textContent = CONFIG.testimonialAuthor;
+document.getElementById('footerText').innerHTML = "&copy; " + new Date().getFullYear() + " " + CONFIG.businessName + ". All rights reserved.";
+
+const telHref = "tel:+1" + CONFIG.phoneLink.replace(/\D/g, '').replace(/^1/, '');
+['headerCallLink','heroCallBtn','contactPhoneLink','contactCallCta'].forEach(id => {
+  document.getElementById(id).setAttribute('href', telHref);
+});
+document.getElementById('headerCallText').textContent = "Call Now";
+document.getElementById('contactPhoneLink').textContent = CONFIG.phoneDisplay;
+document.getElementById('heroDirectionsBtn').setAttribute('href', CONFIG.mapsUrl);
+
+const servicesGrid = document.getElementById('servicesGrid');
+CONFIG.services.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'service-card';
+  card.innerHTML = `<h3>${s.name}</h3><p>${s.desc}</p>`;
+  servicesGrid.appendChild(card);
+});
+
+const hoursStrip = document.getElementById('hoursStrip');
+const todayIdx = new Date().getDay();
+CONFIG.hours.forEach((h, i) => {
+  const el = document.createElement('div');
+  el.className = 'hour-day' + (i === todayIdx ? ' today' : '') + (h.closed ? ' closed' : '');
+  el.innerHTML = `<div class="d">${h.day}</div><div class="t">${h.time}</div>`;
+  hoursStrip.appendChild(el);
+});
+</script>
+
+</body>
+</html>
