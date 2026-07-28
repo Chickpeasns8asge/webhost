@@ -309,9 +309,8 @@
       </svg>
     </div>
     <div class="hero-meta">
-      <div><strong id="metaRating">4.6</strong>Google Rating</div>
-      <div><strong id="metaReviews">56+</strong>Reviews</div>
-      <div><strong id="metaYears">Est. 2017</strong>Locally Owned</div>
+      <div><strong id="metaRating">211+</strong>Google Reviews</div>
+      <div><strong id="metaReviews">Stafford</strong>Locally Owned</div>
     </div>
   </div>
 </section>
@@ -335,7 +334,7 @@
 <section class="testimonial">
   <div class="wrap">
     <blockquote id="testimonialQuote">&ldquo;Gigi is so gentle and understood exactly what I needed &mdash; I'm definitely a repeat customer.&rdquo;</blockquote>
-    <cite id="testimonialAuthor">&mdash; Google Review</cite>
+    <cite id="testimonialAuthor">&mdash; Recent Review</cite>
   </div>
 </section>
 
@@ -379,9 +378,9 @@ const CONFIG = {
   address: "1630 Publix Wy Unit 108, Stafford, VA 22554",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=1630+Publix+Wy+Stafford+VA+22554",
   social: "Find us on Instagram &amp; Facebook",
-  rating: "3.9",
-  reviews: "211+",
-  yearsLabel: "Stafford's Favorite",
+  rating: "211+",
+  reviews: "Stafford",
+  yearsLabel: "Locally Owned",
 
   services: [
     { name: "Manicures & Pedicures", desc: "Classic and spa services, done with care." },
@@ -400,8 +399,8 @@ const CONFIG = {
     { day: "Sat", time: "10–6" }
   ],
 
-  testimonialQuote: "\u201cIvy, Ken, Mimi and the rest of the techs are considerate, professional, and do an amazing job. Best nail salon in Stafford, hands down.\u201d",
-  testimonialAuthor: "\u2014 Google Review"
+  testimonialQuote: "\u201cThe techs are considerate, professional, and do an amazing job. Best nail salon in Stafford, hands down.\u201d",
+  testimonialAuthor: "\u2014 Recent Review"
 };
 
 document.getElementById('brandName').textContent = CONFIG.businessName;
@@ -410,7 +409,7 @@ document.getElementById('heroHeadline').innerHTML = CONFIG.headline;
 document.getElementById('heroSub').innerHTML = CONFIG.subhead;
 document.getElementById('metaRating').textContent = CONFIG.rating;
 document.getElementById('metaReviews').textContent = CONFIG.reviews;
-document.getElementById('metaYears').textContent = CONFIG.yearsLabel;
+if (document.getElementById('metaYears')) document.getElementById('metaYears').textContent = CONFIG.yearsLabel;
 document.getElementById('contactAddress').textContent = CONFIG.address;
 document.getElementById('contactSocial').textContent = CONFIG.social;
 document.getElementById('testimonialQuote').innerHTML = "&ldquo;" + CONFIG.testimonialQuote.replace(/[\u201c\u201d]/g,'') + "&rdquo;";

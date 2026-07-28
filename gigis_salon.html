@@ -324,14 +324,6 @@
   </div>
 </section>
 
-<section class="owner-section">
-  <div class="wrap">
-    <h2 class="section-title">Meet Gigi</h2>
-    <div class="owner-name" id="ownerName">Geraldine "Gigi" R.</div>
-    <p class="owner-blurb" id="ownerBlurb">Bringing over a decade of experience &mdash; including years in Georgetown, DC &mdash; to every client who sits in her chair since 2017.</p>
-  </div>
-</section>
-
 <section class="section">
   <div class="wrap">
     <h2 class="section-title">Hours</h2>
@@ -342,8 +334,8 @@
 
 <section class="testimonial">
   <div class="wrap">
-    <blockquote id="testimonialQuote">&ldquo;Gigi is so gentle and understood exactly what I needed &mdash; I'm definitely a repeat customer.&rdquo;</blockquote>
-    <cite id="testimonialAuthor">&mdash; Google Review</cite>
+    <blockquote id="testimonialQuote">&ldquo;So gentle and understood exactly what I needed &mdash; definitely a repeat customer.&rdquo;</blockquote>
+    <cite id="testimonialAuthor">&mdash; Recent Review</cite>
   </div>
 </section>
 
@@ -398,9 +390,6 @@ const CONFIG = {
     { name: "Keratin & Treatments", desc: "Smoothing treatments starting at $250." }
   ],
 
-  ownerName: "Geraldine \u201cGigi\u201d R.",
-  ownerBlurb: "Bringing over a decade of experience \u2014 including years in Georgetown, DC \u2014 to every client who sits in her chair since 2017.",
-
   hours: [
     { day: "Sun", time: "Closed", closed: true },
     { day: "Mon", time: "Closed", closed: true },
@@ -411,8 +400,8 @@ const CONFIG = {
     { day: "Sat", time: "10–5" }
   ],
 
-  testimonialQuote: "\u201cGigi is so gentle and understood exactly what I needed \u2014 I'm definitely a repeat customer.\u201d",
-  testimonialAuthor: "\u2014 Google Review"
+  testimonialQuote: "\u201cSo gentle and understood exactly what I needed \u2014 definitely a repeat customer.\u201d",
+  testimonialAuthor: "\u2014 Recent Review"
 };
 
 document.getElementById('brandName').textContent = CONFIG.businessName;
@@ -424,8 +413,6 @@ document.getElementById('metaReviews').textContent = CONFIG.reviews;
 document.getElementById('metaYears').textContent = CONFIG.yearsLabel;
 document.getElementById('contactAddress').textContent = CONFIG.address;
 document.getElementById('contactSocial').textContent = CONFIG.social;
-document.getElementById('ownerName').innerHTML = CONFIG.ownerName;
-document.getElementById('ownerBlurb').innerHTML = CONFIG.ownerBlurb;
 document.getElementById('testimonialQuote').innerHTML = "&ldquo;" + CONFIG.testimonialQuote.replace(/[\u201c\u201d]/g,'') + "&rdquo;";
 document.getElementById('testimonialAuthor').textContent = CONFIG.testimonialAuthor;
 document.getElementById('footerText').innerHTML = "&copy; " + new Date().getFullYear() + " " + CONFIG.businessName + ". All rights reserved.";

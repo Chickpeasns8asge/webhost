@@ -366,14 +366,6 @@
   </div>
 </section>
 
-<section class="stylists-section">
-  <div class="wrap">
-    <h2 class="section-title">Meet the Team</h2>
-    <p class="section-sub">The hands behind the work.</p>
-    <div class="stylist-row" id="stylistRow"></div>
-  </div>
-</section>
-
 <section class="section">
   <div class="wrap">
     <h2 class="section-title">Hours</h2>
@@ -384,8 +376,8 @@
 
 <section class="testimonial">
   <div class="wrap">
-    <blockquote id="testimonialQuote">&ldquo;Such a warm, welcoming vibe &mdash; and Brittany really listens to what you want.&rdquo;</blockquote>
-    <cite id="testimonialAuthor">&mdash; Google Review</cite>
+    <blockquote id="testimonialQuote">&ldquo;Such a warm, welcoming vibe, and stylists who really listen to what you want.&rdquo;</blockquote>
+    <cite id="testimonialAuthor">&mdash; Recent Review</cite>
   </div>
 </section>
 
@@ -431,18 +423,13 @@ const CONFIG = {
   social: "@steampunkparlor on Instagram",
   rating: "4.7",
   reviews: "177+",
-  yearsLabel: "Fredericksburg",
+  yearsLabel: "Full Service",
 
   services: [
     { name: "Cuts & Color", desc: "Haircuts, coloring, extensions, and styling." },
     { name: "Nails", desc: "Gel, acrylic, and dip powder treatments." },
     { name: "Brows & Lashes", desc: "Tinting and extensions, done right." },
     { name: "Beard Trims", desc: "Sharp, clean, old-school barbering." }
-  ],
-
-  stylists: [
-    { name: "Danielle", role: "Stylist & Nail Technician" },
-    { name: "Brittany", role: "Stylist" }
   ],
 
   hours: [
@@ -455,8 +442,8 @@ const CONFIG = {
     { day: "Sat", time: "8–5" }
   ],
 
-  testimonialQuote: "\u201cSuch a warm, welcoming vibe \u2014 and Brittany really listens to what you want.\u201d",
-  testimonialAuthor: "\u2014 Google Review"
+  testimonialQuote: "\u201cSuch a warm, welcoming vibe, and stylists who really listen to what you want.\u201d",
+  testimonialAuthor: "\u2014 Recent Review"
 };
 
 document.getElementById('brandName').textContent = CONFIG.businessName;
@@ -485,14 +472,6 @@ CONFIG.services.forEach(s => {
   card.className = 'service-card';
   card.innerHTML = `<h3>${s.name}</h3><p>${s.desc}</p>`;
   servicesGrid.appendChild(card);
-});
-
-const stylistRow = document.getElementById('stylistRow');
-CONFIG.stylists.forEach(s => {
-  const el = document.createElement('div');
-  el.className = 'stylist';
-  el.innerHTML = `<div class="stylist-name">${s.name}</div><div class="stylist-role">${s.role}</div>`;
-  stylistRow.appendChild(el);
 });
 
 const hoursStrip = document.getElementById('hoursStrip');
